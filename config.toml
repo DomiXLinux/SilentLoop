@@ -1,0 +1,4 @@
+baseURL = "https://silentloopdemo.netlify.app/"
+languageCode = "en-us"
+title = "SilentLoop Demo Blog"
+theme = "ananke"
