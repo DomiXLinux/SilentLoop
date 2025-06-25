@@ -16,11 +16,19 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
+          - name: Create auto post
+  env:
+    POST_TITLE: "Passive Income Tips - ${{ github.run_number }}"
+  run: |
+    pip install -r requirements.txt || true
+    python generate_post.py
+ 
+  env:
+    POST_TITLE: "Passive Income Tips - ${{ github.run_number }}"
+  run: |
+    pip install -r requirements.txt || true
+    python generate_post.py
 
-      - name: Create auto post
-        run: |
-          pip install -r requirements.txt || true
-          python generate_post.py "Passive Income Tips - ${{ github.run_number }}"
 
       - name: Commit and push
         run: |
