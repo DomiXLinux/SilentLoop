@@ -1,0 +1,4 @@
+name = "ananke"
+license = "MIT"
+licenselink = "https://github.com/theNewDynamic/gohugo-theme-ananke/blob/master/LICENSE"
+description = "A theme for Hugo based on Ananke"
