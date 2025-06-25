@@ -1,23 +1,15 @@
 import os
+import frontmatter
 from datetime import datetime
 
-def create_post(title):
-    slug = title.lower().replace(" ", "-")
-    date = datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
-    content = f"""---
-title: "{title}"
-date: {date}
-draft: false
----
+title = os.getenv("POST_TITLE", "Untitled Post")
+slug = title.lower().replace(" ", "-")
+date = datetime.now().strftime("%Y-%m-%d")
+filename = f"content/posts/{slug}.md"
 
-This is an auto-generated post about {title}.
-"""
-    path = f"content/posts/{slug}.md"
-    os.makedirs(os.path.dirname(path), exist_ok=True)
-    with open(path, "w") as f:
-        f.write(content)
-    print(f"Post created: {path}")
+post = frontmatter.Post("", title=title, date=date)
+with open(filename, "w", encoding="utf-8") as f:
+    f.write(frontmatter.dumps(post))
 
-if __name__ == "__main__":
-    title = input("Enter post title: ")
-    create_post(title)
+print(f"✅ Created new post: {filename}")
+
